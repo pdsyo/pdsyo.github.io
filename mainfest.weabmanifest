@@ -1,0 +1,16 @@
+{
+  "name": "পেরুল দীঘির দক্ষিণ পাড় যুব সংগঠন",
+  "short_name": "PDSYO",
+  "description": "Perul Dighir South Par Youth Organisation",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F4F7F5",
+  "theme_color": "#0B3D2E",
+  "lang": "bn",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
