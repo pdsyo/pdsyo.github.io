@@ -73,9 +73,15 @@ input.q:focus{outline:0;border-color:var(--red)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
 .chip{border:1px solid var(--red);background:#fff;color:var(--red);border-radius:99px;padding:5px 14px;font:700 14px inherit;cursor:pointer}
 .chip.on{background:var(--red);color:#fff}
-.donor{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--bd);border-radius:12px;padding:12px;margin-bottom:8px}
-.dg{min-width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px}
-.donor .di{flex:1;font-size:13px;color:#374151}.donor .di b{font-size:15px;color:var(--ink)}
+.donor{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--bd);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.dg{flex:0 0 58px;width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:19px;box-shadow:0 2px 6px rgba(200,30,30,.35)}
+.donor .di{flex:1;min-width:0}
+.did{font-size:12px;font-weight:600;color:var(--mut);letter-spacing:.3px}
+.dn{font-size:17px;font-weight:700;line-height:1.35;color:var(--ink);margin:2px 0 5px;overflow-wrap:anywhere}
+.dl{display:flex;gap:6px;align-items:flex-start;font-size:13.5px;line-height:1.45;color:#4B5563}.dl svg{flex:0 0 14px;margin-top:3px}
+.dd{font-size:13px;color:var(--mut);margin-top:5px}
+.ds{font-size:13.5px;margin-top:5px}
+.dp{display:inline-flex;align-items:center;gap:8px;margin-top:9px;min-height:42px;padding:8px 16px;border-radius:99px;background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;font-weight:700;font-size:15px;text-decoration:none}
 .ok{color:#166534;font-weight:700}.wait{color:#B45309;font-weight:700}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
 .tile{background:#F0F7F3;border-radius:10px;padding:10px;text-align:center}.tile b{display:block;font-size:18px;color:var(--g)}.tile span{font-size:12px;color:var(--mut)}
@@ -327,8 +333,19 @@ function matchDonor(d,q,onlyElig){
 function renderChips(){var n=normQ($("bq").value);
   $("bchips").innerHTML='<button type="button" class="chip'+(!n?' on':'')+'" data-g="">'+(lang==="bn"?"সব":"All")+'</button>'+
    GROUPS.map(function(g){return '<button type="button" class="chip'+(n===g?' on':'')+'" data-g="'+g+'">'+g+'</button>'}).join("")}
+var PIN='<svg width="14" height="14" viewBox="0 0 24 24" fill="#B91C1C" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.7 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>';
+var PHN='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>';
+/* কার্ডের ক্রম: Member ID → নাম → 📍ঠিকানা → রক্তদানের তথ্য → প্রস্তুত কি না → ফোন; বাঁ পাশে মাঝখানে লাল বৃত্তে ব্লাড গ্রুপ */
 function donorCard(d){
-  return '<div class="donor"><div class="dg">'+H(d.group)+'</div><div class="di"><b>'+H(d.name)+'</b><br>'+H([d.village,d.upazila].filter(Boolean).join(", "))+'<br>'+(d.last?'সর্বশেষ রক্তদান: '+H(d.last):'এখনো রক্তদান করেননি')+(d.count?' • '+H(d.count)+' বার':'')+'<br>'+(d.eligible?'<span class="ok">✔ রক্তদানে প্রস্তুত</span>':'<span class="wait">⏳ ৯০ দিন পূর্ণ হয়নি</span>')+'</div>'+(d.mobile?'<a class="btn r s" href="tel:'+H(TAB(d.mobile))+'">📞 '+H(d.mobile)+'</a>':'')+'</div>'}
+  var addr=[d.village,d.upazila,d.district].filter(Boolean).join(", ");
+  return '<div class="donor"><div class="dg">'+H(d.group)+'</div><div class="di">'+
+   (d.id?'<div class="did">Member ID: '+H(d.id)+'</div>':'')+
+   '<div class="dn">'+H(d.name)+'</div>'+
+   (addr?'<div class="dl">'+PIN+'<span>'+H(addr)+'</span></div>':'')+
+   '<div class="dd">'+(d.last?'🩸 সর্বশেষ রক্তদান: '+H(d.last)+(d.count?' • '+nf(d.count)+' বার':''):'এখনো রক্তদান করেননি')+'</div>'+
+   '<div class="ds '+(d.eligible?'ok':'wait')+'">'+(d.eligible?'✔ রক্তদানে প্রস্তুত':'⏳ ৯০ দিন পূর্ণ হয়নি')+'</div>'+
+   (d.mobile?'<a class="dp" href="tel:'+H(TAB(d.mobile))+'">'+PHN+'<span>'+H(d.mobile)+'</span></a>':'')+
+   '</div></div>'}
 function renderBlood(){
   renderChips();
   var D=BL.donors;if(D===null)return;
