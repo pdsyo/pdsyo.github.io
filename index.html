@@ -29,9 +29,9 @@ a{color:var(--g2)}img{max-width:100%}
 nav{background:var(--g);overflow-x:auto;white-space:nowrap}
 nav a{display:inline-block;color:#fff;text-decoration:none;padding:9px 14px;font-size:13px}
 nav a:hover{background:var(--g2)}nav a.hot{background:var(--red);font-weight:700}nav a.hot:hover{background:#A31515}
-.hero{background:linear-gradient(135deg,#0B3D2E,#1B7F3B);color:#fff;text-align:center;padding:48px 16px}
+.hero{background:linear-gradient(135deg,rgba(8,45,34,.92),rgba(27,127,59,.86)),url(hero.jpg) center/cover no-repeat,#0B3D2E;color:#fff;text-align:center;padding:40px 16px 48px}
 .hero h1{margin:0 0 6px;font-size:26px}.hero p{margin:0 auto 18px;max-width:600px;opacity:.95}
-.hero .btn{margin:4px}.hero .btn.o{background:transparent;color:#fff;border-color:#fff}
+.hero .btn{margin:4px}.hero .btn.o{background:rgba(255,255,255,.06);color:#fff;border:1.5px solid rgba(255,255,255,.85);border-radius:14px}.hero .hrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:420px;margin:0 auto 6px}.hero .hrow .btn{flex:1;min-width:140px;margin:0;text-align:center}.hero .btn.r.wide{display:block;max-width:300px;margin:10px auto 0;padding:13px 14px;font-size:16px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .wrap{max-width:1100px;margin:auto;padding:0 14px}
 .stats{display:flex;gap:10px;margin:-22px auto 0;max-width:1100px;padding:0 14px;position:relative}
 .stat{flex:1;background:#fff;border-radius:12px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
@@ -100,7 +100,32 @@ details.acc.bl[open]>summary{background:#FEF2F2}
 .dg2{min-width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
 .grp .gl{padding:10px 10px 2px;border-top:1px solid var(--bd);background:#FFF8F8}
 .tabbar{display:none}.tabbar i{font-style:normal}
+
+.stat em{display:block;font-style:normal;font-size:22px;line-height:1.2}
+details.acc.bl{border:1.5px solid var(--red);border-radius:14px;margin-top:16px}
+details.acc.bl>summary{border-left:0;font-size:18px}
+.menuBtn{display:none;border:0;background:transparent;color:var(--g);font-size:28px;line-height:1;width:44px;height:44px;cursor:pointer;border-radius:10px}
+.offbar{background:#FEF3C7;color:#92400E;font-size:13px;text-align:center;padding:6px 10px}
+.ovl{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(82vw,320px);background:#fff;z-index:50;transform:translateX(100%);visibility:hidden;transition:transform .25s ease,visibility .25s;overflow-y:auto;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);box-shadow:-4px 0 18px rgba(0,0,0,.2)}
+.drawer.open{transform:none;visibility:visible}
+.drawer .dh{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--bd);color:var(--g);font-size:18px}
+.drawer .x{border:0;background:transparent;font-size:22px;width:44px;height:44px;cursor:pointer}
+.drawer a{display:flex;align-items:center;gap:14px;padding:13px 18px;min-height:48px;color:var(--ink);text-decoration:none;font-weight:600;border-bottom:1px solid #F3F4F6}
+.drawer a span{font-size:20px;width:26px;text-align:center}.drawer a i{font-style:normal}.drawer a.hot{color:var(--red)}
+.drawer .dfoot{padding:14px 18px;display:flex;gap:8px;flex-wrap:wrap}
+.tabbar button{flex:1;border:0;background:transparent;font:inherit;color:var(--mut);font-size:11px;padding:6px 2px;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+.tabbar button span{font-size:22px;line-height:1.15}.tabbar button i{font-style:normal}
+.tabbar a.on{color:var(--g);font-weight:700}.tabbar a.hot.on{color:var(--red)}
+@media (min-width:769px){.drawer,.ovl{display:none}}
 @media (max-width:768px){
+ nav{display:none}
+ .menuBtn{display:flex;align-items:center;justify-content:center}
+ .bar #langBtn,.bar #installBtn{display:none!important}
+ .quick{display:none}
+ .hero h1{font-size:28px;line-height:1.25}
+ .hero p{font-size:16px}
+
  body{padding-bottom:calc(64px + env(safe-area-inset-bottom))}
  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--bd);padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -2px 10px rgba(0,0,0,.06)}
  .tabbar a{flex:1;text-align:center;text-decoration:none;color:var(--mut);font-size:11px;padding:6px 2px;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -109,7 +134,7 @@ details.acc.bl[open]>summary{background:#FEF2F2}
  input,select{font-size:16px!important}
  details.acc>summary{min-height:54px}
 }
-@media (display-mode:standalone){#installBtn{display:none!important}}
+@media (display-mode:standalone){.installBtn{display:none!important}}
 footer{background:var(--g);color:#D1FAE5;text-align:center;padding:22px 14px;font-size:13px;margin-top:30px}
 footer a{color:#fff}.hide{display:none!important}
 </style>
@@ -117,9 +142,10 @@ footer a{color:#fff}.hide{display:none!important}
 <body>
 <header class="top"><div class="bar">
   <img id="logo" src="icon-192.png" alt="PDSYO">
-  <div class="nm"><b id="orgBn">পেরুল দীঘির দক্ষিণ পাড় যুব সংগঠন</b><small id="tagline">একতা • সেবা • উন্নয়ন</small></div>
-  <button class="btn o s" id="langBtn">English</button>
-  <button class="btn s hide" id="installBtn" data-i="install">📲 অ্যাপ ইন্সটল</button>
+  <div class="nm"><b id="orgBn">পেরুল দীঘির দক্ষিণ পাড় যুব সংগঠন</b><small id="tagline">PDSYO</small></div>
+  <button class="btn o s langBtn" id="langBtn">English</button>
+  <button class="btn s hide installBtn" id="installBtn" data-i="install">📲 অ্যাপ ইন্সটল</button>
+  <button class="menuBtn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="drawer">☰</button>
 </div>
 <nav>
   <a href="#home" data-i="home">হোম</a><a class="hot" href="#blood" data-i="blood">🩸 রক্তদান</a><a href="#about" data-i="about">পরিচিতি</a><a href="#committee" data-i="committee">কমিটি</a>
@@ -127,32 +153,39 @@ footer a{color:#fff}.hide{display:none!important}
   <a href="#gallery" data-i="gallery">গ্যালারি</a><a href="#village" data-i="village">আমাদের গ্রাম</a>
   <a href="#anthem" data-i="anthem">জাতীয় সংগীত</a><a href="#become" data-i="become">সদস্য হন</a><a href="#member" data-i="member">সদস্য লগইন</a><a href="#contact" data-i="contact">যোগাযোগ</a>
 </nav></header>
+<div class="offbar hide" id="offbar">📴 <span data-i="offline">অফলাইন — শেষবার সংরক্ষিত তথ্য দেখানো হচ্ছে</span></div>
+<div class="ovl hide" id="ovl"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu">
+  <div class="dh"><b data-i="menu">মেনু</b><button class="x" id="drawerClose" aria-label="Close">✕</button></div>
+  <a href="#home"><span>🏠</span><i data-i="home">হোম</i></a>
+  <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
+  <a href="#about"><span>ℹ️</span><i data-i="about">পরিচিতি</i></a>
+  <a href="#committee"><span>👥</span><i data-i="committee">কমিটি</i></a>
+  <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
+  <a href="#activities"><span>🏃</span><i data-i="activities">কার্যক্রম</i></a>
+  <a href="#orgs"><span>🤝</span><i data-i="orgs">সংগঠনসমূহ</i></a>
+  <a href="#gallery"><span>🖼️</span><i data-i="gallery">গ্যালারি</i></a>
+  <a href="#village"><span>🏡</span><i data-i="village">আমাদের গ্রাম</i></a>
+  <a href="#anthem"><span>🎵</span><i data-i="anthem">জাতীয় সংগীত</i></a>
+  <a href="#become"><span>➕</span><i data-i="become">সদস্য হন</i></a>
+  <a href="#member"><span>👤</span><i data-i="member">সদস্য লগইন</i></a>
+  <a href="#contact"><span>📞</span><i data-i="contact">যোগাযোগ</i></a>
+  <div class="dfoot"><button class="btn o s langBtn">English</button> <button class="btn s hide installBtn" data-i="install">📲 অ্যাপ ইন্সটল</button></div>
+</aside>
 
 <section class="hero" id="home" style="margin:0">
-  <h1 id="heroTitle">পেরুল দীঘির দক্ষিণ পাড় যুব সংগঠন</h1>
-  <p id="heroSub">Perul Dighir South Par Youth Organisation (PDSYO)</p>
-  <a class="btn" href="#about" data-i="learn">আমাদের সম্পর্কে জানুন</a>
-  <a class="btn o" href="#become" data-i="become">সদস্য হন</a>
-  <a class="btn r" href="#blood" data-i="findBlood">🩸 রক্তদাতা খুঁজুন</a>
+  <h1 id="heroTitle">যুব শক্তিতে গড়বো সুন্দর ভবিষ্যৎ</h1>
+  <p id="heroSub">একতা • সেবা • উন্নয়ন</p>
+  <div class="hrow"><a class="btn o" href="#about" data-i="learn2">আমাদের সম্পর্কে</a><a class="btn o" href="#become" data-i="become">সদস্য হন</a></div>
+  <a class="btn r wide" href="#blood" data-i="findBlood">🩸 রক্তদাতা খুঁজুন</a>
 </section>
 <div class="stats">
-  <div class="stat"><b id="stMem">-</b><span data-i="stMem">সদস্য সংখ্যা</span></div>
-  <div class="stat"><b id="stDonor">-</b><span data-i="stDonor">রক্তদাতা</span></div>
-  <div class="stat"><b id="stYear">-</b><span data-i="stYear">প্রতিষ্ঠা</span></div>
+  <div class="stat"><em>👥</em><b id="stMem">-</b><span data-i="stMem">সদস্য</span></div>
+  <div class="stat"><em>🩸</em><b id="stDonor">-</b><span data-i="stDonor">রক্তদাতা</span></div>
+  <div class="stat"><em>📅</em><b id="stYear">-</b><span data-i="stYear">প্রতিষ্ঠা</span></div>
 </div>
 
 <div class="wrap">
-<a class="bbanner" href="#blood"><span class="bdrop">🩸</span><div><b data-i="bannerT">রক্ত দরকার? রক্তদাতা খুঁজুন</b><small data-i="bannerS">রক্তের গ্রুপ লিখে সার্চ করুন, দাতার সাথে সরাসরি যোগাযোগ করুন</small></div><span class="bgo">›</span></a>
-
-<div class="quick">
-  <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
-  <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
-  <a href="#activities"><span>🏃</span><i data-i="activities">কার্যক্রম</i></a>
-  <a href="#gallery"><span>🖼️</span><i data-i="gallery">গ্যালারি</i></a>
-  <a href="#village"><span>🏡</span><i data-i="village">আমাদের গ্রাম</i></a>
-  <a href="#orgs"><span>🤝</span><i data-i="orgs">সংগঠনসমূহ</i></a>
-</div>
-
 <details class="acc bl" id="blood">
   <summary><span data-i="bloodT">🩸 রক্তদাতা তালিকা (Blood Directory)</span></summary>
   <div class="accb">
@@ -165,6 +198,17 @@ footer a{color:#fff}.hide{display:none!important}
     <div class="small" data-i="bDisc">রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।</div>
   </div>
 </details>
+
+<div class="quick">
+  <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
+  <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
+  <a href="#activities"><span>🏃</span><i data-i="activities">কার্যক্রম</i></a>
+  <a href="#gallery"><span>🖼️</span><i data-i="gallery">গ্যালারি</i></a>
+  <a href="#village"><span>🏡</span><i data-i="village">আমাদের গ্রাম</i></a>
+  <a href="#orgs"><span>🤝</span><i data-i="orgs">সংগঠনসমূহ</i></a>
+</div>
+
+
 
 <details class="acc" id="about"><summary><span data-i="about">পরিচিতি</span></summary><div class="accb" id="aboutBox"></div></details>
 <details class="acc" id="committee"><summary><span data-i="committee">কমিটি</span></summary><div class="accb"><div class="grid" id="committeeBox"></div></div></details>
@@ -196,7 +240,7 @@ footer a{color:#fff}.hide{display:none!important}
 
 <section id="member">
   <h2 data-i="member">সদস্য লগইন</h2>
-  <div id="loginBox"><p data-i="loginNote">নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।</p><div id="gbtn"></div></div>
+  <div id="loginBox"><div class="msg hide" id="loginOff" data-i="loginOff">লগইনের জন্য ইন্টারনেট দরকার।</div><p data-i="loginNote">নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।</p><div id="gbtn"></div></div>
   <div id="meBox" class="hide"></div>
   <div id="allBox" class="hide"></div>
 </section>
@@ -204,10 +248,10 @@ footer a{color:#fff}.hide{display:none!important}
 <section id="contact"><h2 data-i="contact">যোগাযোগ</h2><div class="txt" id="contactBox"></div></section>
 </div>
 <div class="tabbar" id="tabbar">
-  <a href="#home"><span>🏠</span><i data-i="home">হোম</i></a>
-  <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
-  <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
-  <a href="#member"><span>👤</span><i data-i="memberShort">সদস্য</i></a>
+  <a href="#home" data-tab="home"><span>🏠</span><i data-i="home">হোম</i></a>
+  <a class="hot" href="#blood" data-tab="blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
+  <a href="#notice" data-tab="notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
+  <button type="button" id="tabMenu"><span>☰</span><i data-i="menu">মেনু</i></button>
 </div>
 <footer>
   <div id="ftName">PDSYO</div>
@@ -222,13 +266,13 @@ var $=function(i){return document.getElementById(i)};
 var H=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
 var U=function(u){return /^https?:\/\//i.test(u||"")?u:"#"};
 var TAB=function(n){return String(n||"").replace(/[^0-9+]/g,"")};
-var I18={bn:{home:"হোম",blood:"🩸 রক্তদান",blood2:"রক্তদান",about:"পরিচিতি",committee:"কমিটি",notice:"নোটিশ",activities:"কার্যক্রম",orgs:"সংগঠনসমূহ",gallery:"গ্যালারি",village:"আমাদের গ্রাম",anthem:"জাতীয় সংগীত",become:"সদস্য হন",member:"সদস্য লগইন",memberShort:"সদস্য",contact:"যোগাযোগ",learn:"আমাদের সম্পর্কে জানুন",findBlood:"🩸 রক্তদাতা খুঁজুন",install:"📲 অ্যাপ ইন্সটল",stMem:"সদস্য সংখ্যা",stDonor:"রক্তদাতা",stYear:"প্রতিষ্ঠা",bannerT:"রক্ত দরকার? রক্তদাতা খুঁজুন",bannerS:"রক্তের গ্রুপ লিখে সার্চ করুন, দাতার সাথে সরাসরি যোগাযোগ করুন",bloodT:"🩸 রক্তদাতা তালিকা (Blood Directory)",onlyElig:"শুধু এখন রক্তদানে প্রস্তুত (৯০ দিন পূর্ণ হয়েছে)",bDisc:"রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।",becomeT:"আমাদের সংগঠনের সদস্য হতে অনলাইন ফর্ম পূরণ করুন। Admin যাচাই করে অনুমোদন দিলে আপনি সদস্য হবেন।",becomeN:"ফর্মে যে Gmail দিয়ে ঢুকবেন, পরে ওয়েবসাইটে লগইনের সময় সেই Gmail-ই ব্যবহার করবেন।",joinNow:"সদস্য হওয়ার ফর্ম পূরণ করুন",loginNote:"নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।"},
-en:{home:"Home",blood:"🩸 Blood",blood2:"Blood",about:"About",committee:"Committee",notice:"Notice",activities:"Activities",orgs:"Organizations",gallery:"Gallery",village:"Our Village",anthem:"National Anthem",become:"Become a Member",member:"Member Login",memberShort:"Member",contact:"Contact",learn:"Learn About Us",findBlood:"🩸 Find Blood Donor",install:"📲 Install App",stMem:"Members",stDonor:"Blood Donors",stYear:"Established",bannerT:"Need blood? Find a donor",bannerS:"Search by blood group and contact the donor directly",bloodT:"🩸 Blood Donor Directory",onlyElig:"Only donors ready now (90 days passed)",bDisc:"Please call the donor to confirm before going. Data is provided by members themselves.",becomeT:"Fill in the online form to become a member. You join once the Admin verifies and approves.",becomeN:"Use the same Gmail on the form that you will use to log in here later.",joinNow:"Fill the membership form",loginNote:"Sign in with the Gmail you used to register."}};
+var I18={bn:{home:"হোম",blood:"🩸 রক্তদান",blood2:"রক্তদান",about:"পরিচিতি",committee:"কমিটি",notice:"নোটিশ",activities:"কার্যক্রম",orgs:"সংগঠনসমূহ",gallery:"গ্যালারি",village:"আমাদের গ্রাম",anthem:"জাতীয় সংগীত",become:"সদস্য হন",member:"সদস্য লগইন",memberShort:"সদস্য",contact:"যোগাযোগ",learn:"আমাদের সম্পর্কে জানুন",learn2:"আমাদের সম্পর্কে",menu:"মেনু",offline:"অফলাইন — শেষবার সংরক্ষিত তথ্য দেখানো হচ্ছে",loginOff:"লগইনের জন্য ইন্টারনেট দরকার।",findBlood:"🩸 রক্তদাতা খুঁজুন",install:"📲 অ্যাপ ইন্সটল",stMem:"সদস্য",stDonor:"রক্তদাতা",stYear:"প্রতিষ্ঠা",bannerT:"রক্ত দরকার? রক্তদাতা খুঁজুন",bannerS:"রক্তের গ্রুপ লিখে সার্চ করুন, দাতার সাথে সরাসরি যোগাযোগ করুন",bloodT:"🩸 রক্তদাতা তালিকা (Blood Directory)",onlyElig:"শুধু এখন রক্তদানে প্রস্তুত (৯০ দিন পূর্ণ হয়েছে)",bDisc:"রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।",becomeT:"আমাদের সংগঠনের সদস্য হতে অনলাইন ফর্ম পূরণ করুন। Admin যাচাই করে অনুমোদন দিলে আপনি সদস্য হবেন।",becomeN:"ফর্মে যে Gmail দিয়ে ঢুকবেন, পরে ওয়েবসাইটে লগইনের সময় সেই Gmail-ই ব্যবহার করবেন।",joinNow:"সদস্য হওয়ার ফর্ম পূরণ করুন",loginNote:"নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।"},
+en:{home:"Home",blood:"🩸 Blood",blood2:"Blood",about:"About",committee:"Committee",notice:"Notice",activities:"Activities",orgs:"Organizations",gallery:"Gallery",village:"Our Village",anthem:"National Anthem",become:"Become a Member",member:"Member Login",memberShort:"Member",contact:"Contact",learn:"Learn About Us",learn2:"About Us",menu:"Menu",offline:"Offline — showing last saved data",loginOff:"Internet is required to log in.",findBlood:"🩸 Find Blood Donor",install:"📲 Install App",stMem:"Members",stDonor:"Blood Donors",stYear:"Established",bannerT:"Need blood? Find a donor",bannerS:"Search by blood group and contact the donor directly",bloodT:"🩸 Blood Donor Directory",onlyElig:"Only donors ready now (90 days passed)",bDisc:"Please call the donor to confirm before going. Data is provided by members themselves.",becomeT:"Fill in the online form to become a member. You join once the Admin verifies and approves.",becomeN:"Use the same Gmail on the form that you will use to log in here later.",joinNow:"Fill the membership form",loginNote:"Sign in with the Gmail you used to register."}};
 var lang=localStorage.getItem("lang")||"bn",S={};
 function applyLang(){document.documentElement.lang=lang;document.querySelectorAll("[data-i]").forEach(function(e){var t=I18[lang][e.getAttribute("data-i")];if(t)e.textContent=t});
-$("langBtn").textContent=lang==="bn"?"English":"বাংলা";
+document.querySelectorAll(".langBtn").forEach(function(b){b.textContent=lang==="bn"?"English":"বাংলা"});
 if(S["Org Name (Bangla)"]){$("orgBn").textContent=lang==="bn"?S["Org Name (Bangla)"]:S["Org Name (English)"]}}
-$("langBtn").onclick=function(){lang=lang==="bn"?"en":"bn";localStorage.setItem("lang",lang);applyLang();renderBlood()};
+document.querySelectorAll(".langBtn").forEach(function(b){b.onclick=function(){lang=lang==="bn"?"en":"bn";localStorage.setItem("lang",lang);applyLang();renderBlood()}});
 $("yr").textContent=new Date().getFullYear();
 
 /* ---------- ড্রপডাউন (accordion): নেভিগেশনে ক্লিক করলে সেই অংশ খোলে ---------- */
@@ -240,7 +284,7 @@ openById(location.hash.slice(1));
 function empty(id,t){$(id).innerHTML='<div class="txt" style="color:#6B7280">'+t+'</div>'}
 function render(d){
   S=d.settings||{};
-  if(S["Org Name (Bangla)"]){$("heroTitle").textContent=S["Hero Title"]||S["Org Name (Bangla)"];$("heroSub").textContent=S["Hero Subtitle"]||S["Org Name (English)"]+" ("+S["Short Name"]+")";$("tagline").textContent=S["Tagline"]||""}
+  if(S["Org Name (Bangla)"]){$("heroTitle").textContent=S["Hero Title"]||S["Org Name (Bangla)"];$("heroSub").textContent=S["Hero Subtitle"]||S["Tagline"]||S["Org Name (English)"];$("tagline").textContent=S["Short Name"]||""}
   if(S["Logo URL"]){$("logo").src=S["Logo URL"]}
   if(S["Join Link"]){$("joinBtn").href=U(S["Join Link"]);$("joinMiss").classList.add("hide")}else{$("joinBtn").classList.add("hide");$("joinMiss").classList.remove("hide")}
   $("stMem").textContent=(d.stats&&d.stats.members)||"-";$("stYear").textContent=(S["Founded"]||"-").replace(/^.*?(\d{4}).*$/,"$1");
@@ -264,7 +308,7 @@ function render(d){
   applyLang();renderBlood();
 }
 function loadPublic(){
-  try{var c=localStorage.getItem("pdsyo_pub");if(c)render(JSON.parse(c))}catch(e){}
+  try{var c=localStorage.getItem("pdsyo_pub");if(c){var cd=JSON.parse(c);render(cd);if(cd.updated)window.__savedAt=cd.updated}}catch(e){}
   fetch(API+"?action=public").then(function(r){return r.json()}).then(function(j){if(j.ok){render(j.data);try{localStorage.setItem("pdsyo_pub",JSON.stringify(j.data))}catch(e){}}}).catch(function(){});
 }
 
@@ -316,16 +360,25 @@ $("bgroups").addEventListener("toggle",function(e){var g=e.target.getAttribute&&
 
 /* ---------- জাতীয় সংগীত (নিজে বাজবে না; ক্লিক করলে বাজে) ---------- */
 (function(){
-  var a=$("anthemAudio"),b=$("anthemBtn"),m=$("anthemMsg");
+  var a=$("anthemAudio"),b=$("anthemBtn"),m=$("anthemMsg"),SRC="national-anthem.mp3",MEDIA="pdsyo-media";
+  function go(){var p=a.play();if(p&&p.catch)p.catch(function(){m.textContent="অডিও চালানো যায়নি। ফাইল (national-anthem.mp3) আপলোড আছে কি না দেখুন।"})}
+  function keep(){ /* প্রথমবার অনলাইনে বাজালে ফাইলটি ফোনে জমিয়ে রাখে, যাতে পরে অফলাইনেও বাজে */
+    if(!window.caches||!navigator.onLine)return;
+    caches.open(MEDIA).then(function(c){return c.match(SRC).then(function(hit){if(!hit)return fetch(SRC).then(function(r){if(r.ok)return c.put(SRC,r)})})}).catch(function(){})}
   b.onclick=function(){
     m.textContent="";
-    if(a.paused){var p=a.play();if(p&&p.catch)p.catch(function(){m.textContent="অডিও চালানো যায়নি। ফাইল (national-anthem.mp3) আপলোড আছে কি না দেখুন।"})}
-    else{a.pause()}
-  };
-  a.addEventListener("play",function(){b.textContent="⏸ থামান"});
+    if(!a.paused){a.pause();return}
+    if(!navigator.onLine&&window.caches){
+      caches.open(MEDIA).then(function(c){return c.match(SRC)}).then(function(r){return r?r.blob():null}).then(function(bl){
+        if(bl){a.src=URL.createObjectURL(bl);go()}else{m.textContent="অফলাইনে বাজাতে হলে একবার ইন্টারনেটে বাজিয়ে নিতে হবে।"}
+      }).catch(function(){m.textContent="অডিও চালানো যায়নি।"});
+      return}
+    if(/^blob:/.test(a.currentSrc||"")){a.src=SRC}
+    go()};
+  a.addEventListener("play",function(){b.textContent="⏸ থামান";keep()});
   a.addEventListener("pause",function(){b.textContent="▶ জাতীয় সংগীত বাজান"});
   a.addEventListener("ended",function(){b.textContent="▶ জাতীয় সংগীত বাজান"});
-  a.addEventListener("error",function(){m.textContent="অডিও ফাইল পাওয়া যায়নি (national-anthem.mp3)।";b.textContent="▶ জাতীয় সংগীত বাজান"});
+  a.addEventListener("error",function(){if(/^blob:/.test(a.currentSrc||""))return;m.textContent="অডিও ফাইল পাওয়া যায়নি (national-anthem.mp3)।";b.textContent="▶ জাতীয় সংগীত বাজান"});
 })();
 
 /* ---------- Member login ---------- */
@@ -379,12 +432,27 @@ function loadAll(){
   }).catch(function(){box.innerHTML='<div class="msg">সংযোগ ব্যর্থ।</div>'});
 }
 
+
+/* ---------- মেনু ড্রয়ার (মোবাইল) ---------- */
+function menu(open){var d=$("drawer");d.classList.toggle("open",open);$("ovl").classList.toggle("hide",!open);d.setAttribute("aria-hidden",open?"false":"true");$("menuBtn").setAttribute("aria-expanded",open?"true":"false");document.body.style.overflow=open?"hidden":""}
+$("menuBtn").onclick=function(){menu(true)};$("tabMenu").onclick=function(){menu(true)};
+$("drawerClose").onclick=function(){menu(false)};$("ovl").onclick=function(){menu(false)};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")menu(false)});
+$("drawer").addEventListener("click",function(e){if(e.target.closest("a[href^='#']"))menu(false)});
+document.querySelectorAll("#tabbar a").forEach(function(a){a.addEventListener("click",function(){document.querySelectorAll("#tabbar a").forEach(function(x){x.classList.remove("on")});a.classList.add("on")})});
+document.querySelector('#tabbar a[data-tab="home"]').classList.add("on");
+
+/* ---------- অফলাইন অবস্থা ---------- */
+function net(){var off=!navigator.onLine;$("offbar").classList.toggle("hide",!off);$("loginOff").classList.toggle("hide",!off)}
+window.addEventListener("online",net);window.addEventListener("offline",net);net();
+
 /* ---------- Install App (PWA) ---------- */
 var dp=null;
-window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;$("installBtn").classList.remove("hide")});
-$("installBtn").onclick=function(){if(dp){dp.prompt();dp=null;$("installBtn").classList.add("hide")}};
-window.addEventListener("appinstalled",function(){$("installBtn").classList.add("hide")});
-if(/iphone|ipad/i.test(navigator.userAgent)&&!window.navigator.standalone){$("installBtn").classList.remove("hide");$("installBtn").onclick=function(){alert("iPhone-এ: Safari-র Share বোতাম চেপে 'Add to Home Screen' বাছুন।")}}
+var IB=function(){return document.querySelectorAll(".installBtn")};
+window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;IB().forEach(function(b){b.classList.remove("hide")})});
+IB().forEach(function(b){b.onclick=function(){if(dp){dp.prompt();dp=null;IB().forEach(function(x){x.classList.add("hide")})}}});
+window.addEventListener("appinstalled",function(){IB().forEach(function(b){b.classList.add("hide")})});
+if(/iphone|ipad/i.test(navigator.userAgent)&&!window.navigator.standalone){IB().forEach(function(b){b.classList.remove("hide");b.onclick=function(){alert("iPhone-এ: Safari-র Share বোতাম চেপে 'Add to Home Screen' বাছুন।")}})}
 if("serviceWorker" in navigator){
   var hadCtl=!!navigator.serviceWorker.controller,reloaded=false;
   navigator.serviceWorker.addEventListener("controllerchange",function(){if(hadCtl&&!reloaded){reloaded=true;location.reload()}});
