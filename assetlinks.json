@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.pdsyo.twa",
+        "sha256_cert_fingerprints": ["FA:A5:9F:6B:FF:EF:F2:E2:25:10:32:AB:6A:FC:BC:7E:80:91:C9:B7:25:DA:D8:F6:A9:2E:63:8E:E3:18:A9:AA"]
+      }
+    }]
