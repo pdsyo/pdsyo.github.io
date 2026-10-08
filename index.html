@@ -141,6 +141,37 @@ details.acc.bl>summary{border-left:0;font-size:18px}
  details.acc>summary{min-height:54px}
 }
 @media (display-mode:standalone){.installBtn{display:none!important}}
+
+.nb{font-style:normal;background:#B91C1C;color:#fff;font-size:11px;padding:1px 8px;border-radius:99px;margin-left:6px;vertical-align:middle;font-weight:600}
+details.acc.hc{border:1.5px solid #CDE6E2;border-radius:14px;margin-top:10px}
+details.acc.hc>summary{border-left:0;color:#0F766E;font-size:17px}
+details.acc.hc>summary::after{color:#0F766E}
+details.acc.hc[open]>summary{background:#F0FAF8}
+.hbanner{background:linear-gradient(135deg,#0F766E,#0B5A54);color:#fff;border-radius:12px;padding:16px 14px;text-align:center;margin-bottom:12px}
+.hbanner b{display:block;font-size:18px;line-height:1.3}.hbanner span{font-size:13px;opacity:.92}
+.hrow{border:1px solid #DCEDEA;border-radius:12px;margin-bottom:8px;background:#fff;overflow:hidden}
+.hrow>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:56px;font-weight:600;color:#134E4A}
+.hrow>summary::-webkit-details-marker{display:none}
+.hrow>summary::after{content:"›";margin-left:auto;font-size:26px;line-height:1;color:#0F766E;transition:transform .2s}
+.hrow[open]>summary::after{transform:rotate(90deg)}
+.hrow[open]>summary{background:#F0FAF8;border-bottom:1px solid #DCEDEA}
+.hi{flex:0 0 38px;width:38px;height:38px;border-radius:50%;background:#E3F3F0;display:flex;align-items:center;justify-content:center}
+.hi svg{width:20px;height:20px;stroke:#0F766E;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hb{padding:14px;font-size:14px;color:#374151;line-height:1.65}
+.hb p{margin:0 0 8px}.hb small{color:var(--mut);display:block;font-size:12.5px}
+.hl{list-style:none;padding:0;margin:6px 0}.hl li{position:relative;padding-left:24px;margin:7px 0}
+.hl li::before{content:"✓";position:absolute;left:0;color:#0F766E;font-weight:700}
+.hu{padding:10px 12px;border-left:3px solid #0F766E;background:#F7FBFA;border-radius:0 10px 10px 0;margin-bottom:10px}
+.hu.urg{border-left-color:#B45309;background:#FFFBEB}
+.hu b{display:block;color:#134E4A}.hu small{display:block}.hu p{margin:4px 0 0;white-space:pre-line}
+.vs{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #EAF3F1}
+.vs:last-of-type{border-bottom:0}.vs b{color:#134E4A}.vs .vd{text-align:right;font-weight:600;color:#0F766E}.vs .done{color:var(--mut);font-weight:400}
+.hnote{margin-top:10px;padding:10px 12px;background:#F0FAF8;border-radius:10px;font-size:13px;color:#115E59}
+.hc3{padding:10px 0;border-bottom:1px solid #EAF3F1}.hc3:last-child{border-bottom:0}.hc3 b{color:#134E4A}
+.hdon{display:flex;gap:12px;align-items:flex-start}.hdon img{width:84px;height:84px;object-fit:cover;border-radius:10px;background:#E5E7EB;flex:0 0 84px}
+.hct a{color:#0F766E;font-weight:600}
+.hmore{background:none;border:0;color:#0F766E;font:600 13px inherit;padding:6px 0;cursor:pointer}
+.hdisc{font-size:12px;color:var(--mut);margin:12px 2px 0;line-height:1.55}
 footer{background:var(--g);color:#D1FAE5;text-align:center;padding:22px 14px;font-size:13px;margin-top:30px}
 footer a{color:#fff}.hide{display:none!important}
 </style>
@@ -154,7 +185,7 @@ footer a{color:#fff}.hide{display:none!important}
   <button class="menuBtn" id="menuBtn" aria-label="Menu" aria-expanded="false" aria-controls="drawer">☰</button>
 </div>
 <nav>
-  <a href="#home" data-i="home">হোম</a><a class="hot" href="#blood" data-i="blood">🩸 রক্তদান</a><a href="#about" data-i="about">পরিচিতি</a><a href="#committee" data-i="committee">কমিটি</a>
+  <a href="#home" data-i="home">হোম</a><a class="hot" href="#blood" data-i="blood">🩸 রক্তদান</a><a href="#health" data-i="health">স্বাস্থ্যসেবা</a><a href="#about" data-i="about">পরিচিতি</a><a href="#committee" data-i="committee">কমিটি</a>
   <a href="#notice" data-i="notice">নোটিশ</a><a href="#activities" data-i="activities">কার্যক্রম</a><a href="#orgs" data-i="orgs">সংগঠনসমূহ</a>
   <a href="#gallery" data-i="gallery">গ্যালারি</a><a href="#village" data-i="village">আমাদের গ্রাম</a>
   <a href="#anthem" data-i="anthem">জাতীয় সংগীত</a><a href="#become" data-i="become">সদস্য হন</a><a href="#member" data-i="member">সদস্য লগইন</a><a href="#contact" data-i="contact">যোগাযোগ</a>
@@ -165,6 +196,7 @@ footer a{color:#fff}.hide{display:none!important}
   <div class="dh"><b data-i="menu">মেনু</b><button class="x" id="drawerClose" aria-label="Close">✕</button></div>
   <a href="#home"><span>🏠</span><i data-i="home">হোম</i></a>
   <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
+  <a href="#health"><span>🏥</span><i data-i="health">স্বাস্থ্যসেবা</i></a>
   <a href="#about"><span>ℹ️</span><i data-i="about">পরিচিতি</i></a>
   <a href="#committee"><span>👥</span><i data-i="committee">কমিটি</i></a>
   <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
@@ -204,9 +236,14 @@ footer a{color:#fff}.hide{display:none!important}
     <div class="small" data-i="bDisc">রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।</div>
   </div>
 </details>
+<details class="acc hc" id="health">
+  <summary><span><span data-i="healthT">🏥 পেরুল কমিউনিটি ক্লিনিক ও স্বাস্থ্যসেবা</span> <em class="nb hide" id="hcNew" data-i="newT">নতুন</em></span></summary>
+  <div class="accb" id="healthBody"><div class="txt" style="color:#6B7280">শীঘ্রই আসছে।</div></div>
+</details>
 
 <div class="quick">
   <a class="hot" href="#blood"><span>🩸</span><i data-i="blood2">রক্তদান</i></a>
+  <a href="#health"><span>🏥</span><i data-i="health">স্বাস্থ্যসেবা</i></a>
   <a href="#notice"><span>📢</span><i data-i="notice">নোটিশ</i></a>
   <a href="#activities"><span>🏃</span><i data-i="activities">কার্যক্রম</i></a>
   <a href="#gallery"><span>🖼️</span><i data-i="gallery">গ্যালারি</i></a>
@@ -272,8 +309,8 @@ var $=function(i){return document.getElementById(i)};
 var H=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
 var U=function(u){return /^https?:\/\//i.test(u||"")?u:"#"};
 var TAB=function(n){return String(n||"").replace(/[^0-9+]/g,"")};
-var I18={bn:{home:"হোম",blood:"🩸 রক্তদান",blood2:"রক্তদান",about:"পরিচিতি",committee:"কমিটি",notice:"নোটিশ",activities:"কার্যক্রম",orgs:"সংগঠনসমূহ",gallery:"গ্যালারি",village:"আমাদের গ্রাম",anthem:"জাতীয় সংগীত",become:"সদস্য হন",member:"সদস্য লগইন",memberShort:"সদস্য",contact:"যোগাযোগ",learn:"আমাদের সম্পর্কে জানুন",learn2:"আমাদের সম্পর্কে",menu:"মেনু",offline:"অফলাইন — শেষবার সংরক্ষিত তথ্য দেখানো হচ্ছে",loginOff:"লগইনের জন্য ইন্টারনেট দরকার।",findBlood:"🩸 রক্তদাতা খুঁজুন",install:"📲 অ্যাপ ইন্সটল",stMem:"সদস্য",stDonor:"রক্তদাতা",stYear:"প্রতিষ্ঠা",bannerT:"রক্ত দরকার? রক্তদাতা খুঁজুন",bannerS:"রক্তের গ্রুপ লিখে সার্চ করুন, দাতার সাথে সরাসরি যোগাযোগ করুন",bloodT:"🩸 রক্তদাতা তালিকা (Blood Directory)",onlyElig:"শুধু এখন রক্তদানে প্রস্তুত (৯০ দিন পূর্ণ হয়েছে)",bDisc:"রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।",becomeT:"আমাদের সংগঠনের সদস্য হতে অনলাইন ফর্ম পূরণ করুন। Admin যাচাই করে অনুমোদন দিলে আপনি সদস্য হবেন।",becomeN:"ফর্মে যে Gmail দিয়ে ঢুকবেন, পরে ওয়েবসাইটে লগইনের সময় সেই Gmail-ই ব্যবহার করবেন।",joinNow:"সদস্য হওয়ার ফর্ম পূরণ করুন",loginNote:"নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।"},
-en:{home:"Home",blood:"🩸 Blood",blood2:"Blood",about:"About",committee:"Committee",notice:"Notice",activities:"Activities",orgs:"Organizations",gallery:"Gallery",village:"Our Village",anthem:"National Anthem",become:"Become a Member",member:"Member Login",memberShort:"Member",contact:"Contact",learn:"Learn About Us",learn2:"About Us",menu:"Menu",offline:"Offline — showing last saved data",loginOff:"Internet is required to log in.",findBlood:"🩸 Find Blood Donor",install:"📲 Install App",stMem:"Members",stDonor:"Blood Donors",stYear:"Established",bannerT:"Need blood? Find a donor",bannerS:"Search by blood group and contact the donor directly",bloodT:"🩸 Blood Donor Directory",onlyElig:"Only donors ready now (90 days passed)",bDisc:"Please call the donor to confirm before going. Data is provided by members themselves.",becomeT:"Fill in the online form to become a member. You join once the Admin verifies and approves.",becomeN:"Use the same Gmail on the form that you will use to log in here later.",joinNow:"Fill the membership form",loginNote:"Sign in with the Gmail you used to register."}};
+var I18={bn:{home:"হোম",health:"স্বাস্থ্যসেবা",healthT:"🏥 পেরুল কমিউনিটি ক্লিনিক ও স্বাস্থ্যসেবা",newT:"নতুন",blood:"🩸 রক্তদান",blood2:"রক্তদান",about:"পরিচিতি",committee:"কমিটি",notice:"নোটিশ",activities:"কার্যক্রম",orgs:"সংগঠনসমূহ",gallery:"গ্যালারি",village:"আমাদের গ্রাম",anthem:"জাতীয় সংগীত",become:"সদস্য হন",member:"সদস্য লগইন",memberShort:"সদস্য",contact:"যোগাযোগ",learn:"আমাদের সম্পর্কে জানুন",learn2:"আমাদের সম্পর্কে",menu:"মেনু",offline:"অফলাইন — শেষবার সংরক্ষিত তথ্য দেখানো হচ্ছে",loginOff:"লগইনের জন্য ইন্টারনেট দরকার।",findBlood:"🩸 রক্তদাতা খুঁজুন",install:"📲 অ্যাপ ইন্সটল",stMem:"সদস্য",stDonor:"রক্তদাতা",stYear:"প্রতিষ্ঠা",bannerT:"রক্ত দরকার? রক্তদাতা খুঁজুন",bannerS:"রক্তের গ্রুপ লিখে সার্চ করুন, দাতার সাথে সরাসরি যোগাযোগ করুন",bloodT:"🩸 রক্তদাতা তালিকা (Blood Directory)",onlyElig:"শুধু এখন রক্তদানে প্রস্তুত (৯০ দিন পূর্ণ হয়েছে)",bDisc:"রক্তদানের আগে দাতার সাথে ফোনে কথা বলে নিশ্চিত হোন। এই তালিকা সদস্যদের নিজের দেওয়া তথ্যের ভিত্তিতে।",becomeT:"আমাদের সংগঠনের সদস্য হতে অনলাইন ফর্ম পূরণ করুন। Admin যাচাই করে অনুমোদন দিলে আপনি সদস্য হবেন।",becomeN:"ফর্মে যে Gmail দিয়ে ঢুকবেন, পরে ওয়েবসাইটে লগইনের সময় সেই Gmail-ই ব্যবহার করবেন।",joinNow:"সদস্য হওয়ার ফর্ম পূরণ করুন",loginNote:"নিবন্ধনের সময় দেওয়া Gmail দিয়ে লগইন করুন।"},
+en:{home:"Home",health:"Health",healthT:"🏥 Perul Community Clinic & Health Services",newT:"New",blood:"🩸 Blood",blood2:"Blood",about:"About",committee:"Committee",notice:"Notice",activities:"Activities",orgs:"Organizations",gallery:"Gallery",village:"Our Village",anthem:"National Anthem",become:"Become a Member",member:"Member Login",memberShort:"Member",contact:"Contact",learn:"Learn About Us",learn2:"About Us",menu:"Menu",offline:"Offline — showing last saved data",loginOff:"Internet is required to log in.",findBlood:"🩸 Find Blood Donor",install:"📲 Install App",stMem:"Members",stDonor:"Blood Donors",stYear:"Established",bannerT:"Need blood? Find a donor",bannerS:"Search by blood group and contact the donor directly",bloodT:"🩸 Blood Donor Directory",onlyElig:"Only donors ready now (90 days passed)",bDisc:"Please call the donor to confirm before going. Data is provided by members themselves.",becomeT:"Fill in the online form to become a member. You join once the Admin verifies and approves.",becomeN:"Use the same Gmail on the form that you will use to log in here later.",joinNow:"Fill the membership form",loginNote:"Sign in with the Gmail you used to register."}};
 var lang=localStorage.getItem("lang")||"bn",S={};
 function applyLang(){document.documentElement.lang=lang;document.querySelectorAll("[data-i]").forEach(function(e){var t=I18[lang][e.getAttribute("data-i")];if(t)e.textContent=t});
 document.querySelectorAll(".langBtn").forEach(function(b){b.textContent=lang==="bn"?"English":"বাংলা"});
@@ -311,6 +348,7 @@ function render(d){
   $("contactBox").innerHTML='📍 '+H(S["Address"])+(S["Union"]?' ('+H(S["Union"])+')':'')+'<br>📞 '+H(S["Phone"])+'<br>✉️ '+H(S["Email"])+(S["Map Link"]?'<br><a href="'+H(U(S["Map Link"]))+'" target="_blank" rel="noopener">মানচিত্রে দেখুন</a>':'');
   var fl="";[["Facebook","Facebook"],["YouTube","YouTube"]].forEach(function(x){if(S[x[0]])fl+='<a href="'+H(U(S[x[0]]))+'" target="_blank" rel="noopener">'+x[1]+'</a> &nbsp; '});
   $("ftLinks").innerHTML=fl;$("ftName").textContent=S["Org Name (Bangla)"]||"PDSYO";
+  renderHealth(d.health);
   applyLang();renderBlood();
 }
 function loadPublic(){
@@ -374,6 +412,77 @@ $("bq").addEventListener("input",onBloodFilter);
 $("belig").addEventListener("change",onBloodFilter);
 $("bchips").addEventListener("click",function(e){var b=e.target.closest("button[data-g]");if(!b)return;var g=b.getAttribute("data-g");$("bq").value=(g===""||normQ($("bq").value)===g)?"":g;onBloodFilter()});
 $("bgroups").addEventListener("toggle",function(e){var g=e.target.getAttribute&&e.target.getAttribute("data-g");if(g)OPEN[g]=e.target.open},true);
+
+
+/* ---------- কমিউনিটি ক্লিনিক ও স্বাস্থ্যসেবা ---------- */
+var HI={bell:'<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>',
+ shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+ sun:'<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/>',
+ heart:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.2l7.8-7.7 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+ plus:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/>',
+ pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+ award:'<circle cx="12" cy="8" r="7"/><path d="M8.2 13.9L7 23l5-3 5 3-1.2-9.1"/>',
+ phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>'};
+var HOPEN={};
+function pad2(n){return(n<10?"0":"")+n}
+function todayIso(){var d=new Date();return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate())}
+function bnDate(iso,day){try{var o=day?{day:"numeric",month:"long",year:"numeric",weekday:"long"}:{day:"numeric",month:"long",year:"numeric"};return new Date(iso+"T12:00:00").toLocaleDateString(lang==="bn"?"bn-BD":"en-GB",o)}catch(e){return iso}}
+function isNewUpd(iso){if(!iso)return false;var d=(new Date(todayIso()+"T12:00:00")-new Date(iso+"T12:00:00"))/86400000;return d>=-1&&d<=7}
+function hrow(id,icon,title,body,badge){return '<details class="hrow" data-h="'+id+'"'+(HOPEN[id]?' open':'')+'><summary><span class="hi"><svg viewBox="0 0 24 24" aria-hidden="true">'+HI[icon]+'</svg></span><span>'+title+(badge?' <em class="nb">নতুন</em>':'')+'</span></summary><div class="hb">'+body+'</div></details>'}
+function hlist(a){return '<ul class="hl">'+a.map(function(x){return '<li>'+H(x)+'</li>'}).join("")+'</ul>'}
+function renderHealth(h){
+  var box=$("healthBody");
+  if(!h||!h.settings){box.innerHTML='<div class="txt" style="color:#6B7280">শীঘ্রই আসছে।</div>';$("hcNew").classList.add("hide");return}
+  var s=h.settings,T=todayIso(),rows="",anyNew=false;
+  var banner='<div class="hbanner"><b>'+H(s["Clinic Name"]||"কমিউনিটি ক্লিনিক")+'</b>'+(s["Tagline"]?'<span>'+H(s["Tagline"])+'</span>':'')+'</div>';
+  // ১. সর্বশেষ স্বাস্থ্য আপডেট
+  if((h.updates||[]).length){
+    var US=h.updates,items=US.map(function(u,i){var nw=isNewUpd(u.iso);if(nw)anyNew=true;
+      return '<div class="hu'+(u.urgent?' urg':'')+(i>=5?' hmx hide':'')+'">'+(u.iso||u.text?'<small>'+H(u.iso?bnDate(u.iso):u.text)+'</small>':'')+'<b>'+(u.urgent?'⚠️ ':'')+H(u.title)+(nw?' <em class="nb">নতুন</em>':'')+'</b>'+(u.details?'<p>'+H(u.details)+'</p>':'')+'</div>'}).join("");
+    if(US.length>5)items+='<button type="button" class="hmore" data-more="1">আরও দেখান ('+(US.length-5)+')</button>';
+    rows+=hrow("upd","bell","সর্বশেষ স্বাস্থ্য আপডেট",items,US.some(function(u){return isNewUpd(u.iso)}));
+  }
+  // ২. মাসিক টিকাদান কর্মসূচি
+  var V=h.vacc||[];
+  if(V.length||s["Vaccination Note"]){
+    var ym=T.slice(0,7),inM=V.filter(function(v){return v.iso&&v.iso.slice(0,7)===ym}),up=inM.length?[]:V.filter(function(v){return v.iso&&v.iso>=T}).slice(0,6),rules=V.filter(function(v){return !v.iso&&v.text});
+    var vrow=function(v,dateHtml){return '<div class="vs"><div><b>'+H(v.center)+'</b>'+(v.note?'<small>'+H(v.note)+'</small>':'')+'</div><div class="vd">'+dateHtml+(v.time?'<small>'+H(v.time)+'</small>':'')+'</div></div>'};
+    var b="";
+    var list=inM.length?inM:up;
+    if(list.length){b+='<p><b>'+(inM.length?'এ মাসের টিকাদান সূচি':'আসন্ন টিকাদান সূচি')+'</b></p>'+list.map(function(v){return vrow(v,H(bnDate(v.iso,true))+(v.iso<T?'<small class="done">সম্পন্ন</small>':''))}).join("")}
+    if(rules.length){b+='<p style="margin-top:8px"><b>নিয়মিত সূচি</b></p>'+rules.map(function(v){return vrow(v,H(v.text))}).join("")}
+    if(!list.length&&!rules.length)b+='<p>এই মাসের সূচি এখনো দেওয়া হয়নি।</p>';
+    if(s["Vaccination Note"])b+='<div class="hnote">'+H(s["Vaccination Note"])+'</div>';
+    rows+=hrow("vac","shield","মাসিক টিকাদান কর্মসূচি",b);
+  }
+  // ৩. ভিটামিন A
+  if(s["Vitamin A Text"]||s["Vitamin A Next Date"]){
+    var vb=(s["Vitamin A Text"]?'<p>'+H(s["Vitamin A Text"])+'</p>':'');
+    if((h.centers||[]).length)vb+='<p><b>কেন্দ্রসমূহ:</b></p>'+hlist(h.centers.map(function(c){return c.area+(c.type?' ('+c.type+')':'')}));
+    vb+='<div class="hnote">'+(s["Vitamin A Next Date"]?'পরবর্তী কর্মসূচি: <b>'+H(s["Vitamin A Next Date"])+'</b>':'পরবর্তী কর্মসূচির তারিখ সর্বশেষ আপডেটে দেখুন।')+'</div>';
+    rows+=hrow("vit","sun","ভিটামিন A ক্যাপসুল কর্মসূচি",vb);
+  }
+  // ৪. মা ও শিশু
+  if((h.mother||[]).length)rows+=hrow("mom","heart","মা ও শিশু স্বাস্থ্যসেবা",hlist(h.mother));
+  // ৫. ওষুধ ও অন্যান্য সেবা
+  if((h.services||[]).length||s["Services Note"])rows+=hrow("svc","plus","ওষুধ ও অন্যান্য সেবা",((h.services||[]).length?'<p><b>আমাদের সেবাসমূহ:</b></p>'+hlist(h.services):'')+(s["Services Note"]?'<div class="hnote">'+H(s["Services Note"])+'</div>':''));
+  // ৬. সেবা ও কেন্দ্রসমূহ
+  if((h.centers||[]).length)rows+=hrow("cen","pin","সেবা ও কেন্দ্রসমূহ",h.centers.map(function(c){return '<div class="hc3"><b>'+H(c.area)+'</b><br>'+H([c.name,c.type].filter(Boolean).join(" • "))+(c.note?'<small>'+H(c.note)+'</small>':'')+(c.landmark?'<small>📍 '+H(c.landmark)+'</small>':'')+(c.phone?'<small class="hct"><a href="tel:'+H(TAB(c.phone))+'">'+H(c.phone)+'</a></small>':'')+'</div>'}).join(""));
+  // ৭. জমিদাতার অবদান
+  if((h.donors||[]).length)rows+=hrow("don","award","জমিদাতার অবদান",h.donors.map(function(d){return '<div class="hdon">'+(d.photo?'<img src="'+H(d.photo)+'" alt="" loading="lazy">':'')+'<div><b>'+H(d.name)+'</b>'+(d.year?' <small style="display:inline">('+H(d.year)+')</small>':'')+(d.details?'<p>'+H(d.details)+'</p>':'')+'</div></div>'}).join('<hr style="border:0;border-top:1px solid #EAF3F1;margin:10px 0">'));
+  // ৮. যোগাযোগ ও সেবার সময়
+  if(s["Clinic Address"]||s["CHCP Name"]||s["CHCP Mobile"]||s["Service Time"]){
+    var cb='';
+    if(s["Clinic Address"])cb+='<p><b>'+H(s["Clinic Name"]||"কমিউনিটি ক্লিনিক")+'</b><br>📍 '+H(s["Clinic Address"])+(s["Map Link"]?' <span class="hct"><a href="'+H(U(s["Map Link"]))+'" target="_blank" rel="noopener">মানচিত্র</a></span>':'')+'</p>';
+    if(s["CHCP Name"]||s["CHCP Mobile"])cb+='<p>CHCP: '+H(s["CHCP Name"])+(s["CHCP Mobile"]?'<br><span class="hct">📞 <a href="tel:'+H(TAB(s["CHCP Mobile"]))+'">'+H(s["CHCP Mobile"])+'</a></span>':'')+'</p>';
+    if(s["Service Time"])cb+='<p><b>সেবার সময়</b><br>'+H(s["Service Time"])+(s["Closed Days"]?'<small>'+H(s["Closed Days"])+'</small>':'')+'</p>';
+    rows+=hrow("con","phone","যোগাযোগ ও সেবার সময়",cb);
+  }
+  box.innerHTML=banner+(rows||'<div class="txt" style="color:#6B7280">শীঘ্রই আসছে।</div>')+(s["Health Disclaimer"]?'<p class="hdisc">'+H(s["Health Disclaimer"])+'</p>':'');
+  $("hcNew").classList.toggle("hide",!anyNew);
+}
+$("healthBody").addEventListener("toggle",function(e){var k=e.target.getAttribute&&e.target.getAttribute("data-h");if(k)HOPEN[k]=e.target.open},true);
+$("healthBody").addEventListener("click",function(e){var b=e.target.closest("button[data-more]");if(!b)return;document.querySelectorAll("#healthBody .hmx").forEach(function(x){x.classList.remove("hide")});b.remove()});
 
 /* ---------- জাতীয় সংগীত (নিজে বাজবে না; ক্লিক করলে বাজে) ---------- */
 (function(){
