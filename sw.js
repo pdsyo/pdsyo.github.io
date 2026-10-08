@@ -2,7 +2,7 @@
    - পেজ/আইকন: নেটওয়ার্ক আগে, না পেলে জমানো কপি (অফলাইনেও অ্যাপ খোলে)
    - ছবি ও ফন্ট (অন্য সাইট থেকে আসা): জমানো কপি আগে দেখায়, পেছনে নতুন কপি এনে রাখে
    - অডিও/Range অনুরোধ ও API সরাসরি নেটওয়ার্কে (পেজ নিজে জমায়) */
-const CACHE = "pdsyo-v4", MEDIA = "pdsyo-media", IMG = "pdsyo-img", FONT = "pdsyo-font";
+const CACHE = "pdsyo-v5", MEDIA = "pdsyo-media", IMG = "pdsyo-img", FONT = "pdsyo-font";
 const KEEP = [CACHE, MEDIA, IMG, FONT];
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "icon-maskable-512.png"];
 
