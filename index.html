@@ -327,22 +327,36 @@ if(S["Org Name (Bangla)"]){$("orgBn").textContent=lang==="bn"?S["Org Name (Bangl
 document.querySelectorAll(".langBtn").forEach(function(b){b.onclick=function(){lang=lang==="bn"?"en":"bn";localStorage.setItem("lang",lang);applyLang();renderBlood()}});
 $("yr").textContent=new Date().getFullYear();
 /* ---------- ড্রপডাউন (accordion) + মোবাইল ব্যাক বাটন ----------
-   ড্রপডাউন/মেনু খুললে একটি নকল history state (pushState) যোগ হয়।
-   ব্যাক চাপলে সেটি বাদ যায় ও ড্রপডাউন বন্ধ হয়; কিছু খোলা না থাকলে ব্যাকে অ্যাপ থেকে বের হয়। */
-var BK={on:false};
+   যতবার কোনো ড্রপডাউন / ভেতরের ড্রপডাউন / মেনু খোলা হয়, একটি করে history state (pushState) যোগ হয়।
+   ব্যাক চাপলে সর্বশেষ খোলাটি বন্ধ হয় — যে ক্রমে ঢুকেছে, উল্টো ক্রমে এক ধাপ এক ধাপ করে বের হয়।
+   কিছু খোলা না থাকলে (হোম পেজে) ব্যাকে অ্যাপ থেকে বের হয়। */
+var BK={st:[],skip:0,swap:false};
 function openById(id){var e=id&&document.getElementById(id);if(e&&e.tagName==="DETAILS")e.open=true}
-function anyOpen(){return document.querySelector("details.acc[open]")||$("drawer").classList.contains("open")}
-function pushBk(){if(!BK.on){history.pushState({pdsyoBk:1},"");BK.on=true}}
-function popBk(){if(BK.on&&!anyOpen()){BK.on=false;history.back()}}
-document.addEventListener("toggle",function(e){var t=e.target;if(!(t.matches&&t.matches("details.acc")))return;if(t.open)pushBk();else popBk()},true);
-window.addEventListener("popstate",function(){if(BK.on){BK.on=false;document.querySelectorAll("details.acc[open]").forEach(function(d){d.open=false});menu(false,true)}});
+function keyOf(d){if(d.matches("details.acc"))return d.id?"a:"+d.id:null;if(d.matches("details.hrow"))return "h:"+d.getAttribute("data-h");if(d.matches("details.grp"))return "g:"+d.getAttribute("data-g");return null}
+function elByKey(k){if(k==="drawer")return $("drawer");var t=k.charAt(0),v=k.slice(2);if(t==="a")return document.getElementById(v);if(t==="h")return document.querySelector('details.hrow[data-h="'+v+'"]');if(t==="g")return document.querySelector('details.grp[data-g="'+v+'"]');return null}
+function isOpenKey(k){var e=elByKey(k);if(!e)return false;return k==="drawer"?e.classList.contains("open"):e.open}
+function closeKey(k){var e=elByKey(k);if(!e)return;if(k==="drawer")menu(false,true);else e.open=false}
+function pushKey(k){if(!k||BK.st.indexOf(k)>-1)return;
+if(BK.swap){var i=BK.st.lastIndexOf("drawer");if(i>-1){BK.st[i]=k;BK.swap=false;return}}
+history.pushState({pdsyoBk:1},"");BK.st.push(k)}
+function dropKey(k,d){var n=BK.st.length;BK.st=BK.st.filter(function(x){if(x===k)return false;if(d&&x!=="drawer"){var e=elByKey(x);if(e&&e!==d&&d.contains(e))return false}return true});n-=BK.st.length;if(n>0){BK.skip++;history.go(-n)}}
+window.addEventListener("popstate",function(){
+if(BK.skip>0){BK.skip--;return}
+var p=0,done=false;
+while(BK.st.length&&!done){var k=BK.st.pop();p++;if(isOpenKey(k)){closeKey(k);done=true}}
+if(p>1){BK.skip++;history.go(-(p-1))}});
 document.addEventListener("click",function(ev){
+var sm=ev.target.closest&&ev.target.closest("summary");
+if(sm&&sm.parentNode&&sm.parentNode.tagName==="DETAILS"){var d=sm.parentNode,k=keyOf(d);
+if(k){var was=d.open;setTimeout(function(){if(d.open&&!was)pushKey(k);else if(!d.open&&was)dropKey(k,d)},0)}return}
 var a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(!a)return;
 var id=a.getAttribute("href").slice(1),el=id&&document.getElementById(id);if(!el)return;
-ev.preventDefault();var dd=el.tagName==="DETAILS";if(dd)el.open=true;
-setTimeout(function(){el.scrollIntoView({behavior:"smooth",block:"start"});if(!dd)popBk()},0)});
+ev.preventDefault();
+if(el.tagName==="DETAILS"&&!el.open){el.open=true;pushKey(keyOf(el))}
+setTimeout(function(){el.scrollIntoView({behavior:"smooth",block:"start"})},0)});
 window.addEventListener("hashchange",function(){openById(location.hash.slice(1))});
-openById(location.hash.slice(1));
+var h0=location.hash.slice(1);openById(h0);
+var e0=h0&&document.getElementById(h0);if(e0&&e0.tagName==="DETAILS")pushKey(keyOf(e0));
 function commCard(m){return '<div class="card mem"><img src="'+H(m.photo||"icon-192.png")+'" alt="" loading="lazy"><h3>'+H(m.name)+'</h3>'+(m.memberId?'<div class="mid">Member ID: <b>'+H(m.memberId)+'</b></div>':'')+(m.position?'<small>'+H(m.position)+'</small>':'')+'</div>'}
 function empty(id,t){$(id).innerHTML='<div class="txt" style="color:#6B7280">'+t+'</div>'}
 function render(d){
@@ -594,11 +608,11 @@ show("");$("srch").oninput=function(){show(this.value)};
 }).catch(function(){box.innerHTML='<div class="msg">সংযোগ ব্যর্থ।</div>'});
 }
 /* ---------- মেনুড্রয়ার (মোবাইল) ---------- */
-function menu(open,keep){var d=$("drawer");d.classList.toggle("open",open);$("ovl").classList.toggle("hide",!open);d.setAttribute("aria-hidden",open?"false":"true");$("menuBtn").setAttribute("aria-expanded",open?"true":"false");document.body.style.overflow=open?"hidden":"";if(open)pushBk();else if(!keep)popBk()}
+function menu(open,keep){var d=$("drawer");d.classList.toggle("open",open);$("ovl").classList.toggle("hide",!open);d.setAttribute("aria-hidden",open?"false":"true");$("menuBtn").setAttribute("aria-expanded",open?"true":"false");document.body.style.overflow=open?"hidden":"";if(open)pushKey("drawer");else if(!keep)dropKey("drawer",null)}
 $("menuBtn").onclick=function(){menu(true)};$("tabMenu").onclick=function(){menu(true)};
 $("drawerClose").onclick=function(){menu(false)};$("ovl").onclick=function(){menu(false)};
 document.addEventListener("keydown",function(e){if(e.key==="Escape")menu(false)});
-$("drawer").addEventListener("click",function(e){if(e.target.closest("a[href^='#']"))menu(false,true)});
+$("drawer").addEventListener("click",function(e){if(e.target.closest("a[href^='#']")){BK.swap=true;menu(false,true);setTimeout(function(){if(BK.swap){BK.swap=false;dropKey("drawer",null)}},0)}});
 document.querySelectorAll("#tabbar a").forEach(function(a){a.addEventListener("click",function(){document.querySelectorAll("#tabbar a").forEach(function(x){x.classList.remove("on")});a.classList.add("on")})});
 document.querySelector('#tabbar a[data-tab="home"]').classList.add("on");
 /* ---------- অফলাইন অবস্থা ---------- */
